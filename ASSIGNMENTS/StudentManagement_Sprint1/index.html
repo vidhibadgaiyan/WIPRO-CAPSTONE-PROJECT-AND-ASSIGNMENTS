@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Flowers School - Student Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2ed573;
+            --accent: #ff6b81;
+            --bg-dark: #0f172a;
+            --card-glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 10% 20%, rgba(46, 213, 115, 0.1) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 80%, rgba(255, 107, 129, 0.1) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styling */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 10%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .school-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            flex: 1;
+        }
+
+        .section {
+            animation: slideIn 0.6s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hidden { display: none; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Page Styles */
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .profile-btn {
+            padding: 0.8rem 2rem;
+            background: var(--primary);
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(46, 213, 115, 0.3);
+        }
+
+        .profile-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(46, 213, 115, 0.4);
+        }
+
+        /* Profile Card Styles */
+        .profile-card {
+            background: var(--card-glass);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .label { color: var(--text-muted); }
+        .value { font-weight: 600; }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-glass);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-brand">
+            <img src="logo.png" class="logo" alt="logo">
+            <span class="school-name">Spring Flowers School</span>
+        </div>
+        <ul class="nav-links">
+            <li><a id="nav-home" class="active">Home</a></li>
+            <li><a id="nav-profile">Student Profile</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Welcome Page Section -->
+        <section id="welcome-page" class="section">
+            <h1 class="hero-title">Welcome Student Portal</h1>
+            <p class="hero-desc">Your gateway to academic excellence and school resources.</p>
+            <button class="profile-btn" id="view-profile-btn">Go to My Profile</button>
+        </section>
+
+        <!-- Student Profile Section -->
+        <section id="profile-page" class="section hidden">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="avatar">SJ</div>
+                    <div>
+                        <h2>Sarah Johnson</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Grade 10 - Section A</p>
+                    </div>
+                </div>
+                <div class="info-grid">
+                    <div class="info-row">
+                        <span class="label">Student ID:</span>
+                        <span class="value">SFS-2026-1024</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Full Name:</span>
+                        <span class="value">Sarah Johnson</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Email Address:</span>
+                        <span class="value">sarah.j@springflowers.edu</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Date of Birth:</span>
+                        <span class="value">May 12, 2010</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Attendance:</span>
+                        <span class="value" style="color: var(--primary);">98.5%</span>
+                    </div>
+                </div>
+            </div>
+            <button class="profile-btn" style="margin-top: 2rem; background: transparent; border: 1px solid var(--border-glass); color: #fff;" id="back-home-btn">← Back to Home</button>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Spring Flowers School Management System</p>
+    </footer>
+
+    <script>
+        const welcomePage = document.getElementById('welcome-page');
+        const profilePage = document.getElementById('profile-page');
+        const navHome = document.getElementById('nav-home');
+        const navProfile = document.getElementById('nav-profile');
+        const viewProfileBtn = document.getElementById('view-profile-btn');
+        const backHomeBtn = document.getElementById('back-home-btn');
+
+        function showProfile() {
+            welcomePage.classList.add('hidden');
+            profilePage.classList.remove('hidden');
+            navHome.classList.remove('active');
+            navProfile.classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function showHome() {
+            profilePage.classList.add('hidden');
+            welcomePage.classList.remove('hidden');
+            navProfile.classList.remove('active');
+            navHome.classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        navHome.onclick = showHome;
+        navProfile.onclick = showProfile;
+        viewProfileBtn.onclick = showProfile;
+        backHomeBtn.onclick = showHome;
+    </script>
+</body>
+</html>

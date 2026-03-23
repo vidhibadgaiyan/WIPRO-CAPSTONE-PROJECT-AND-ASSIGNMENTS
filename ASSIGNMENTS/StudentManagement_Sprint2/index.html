@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Flowers School - Sprint 2</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2ed573;
+            --secondary: #ff6b81;
+            --dark-shade: #1e293b;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            padding-top: 70px; /* Offset for sticky nav */
+        }
+
+        /* Navbar Customization */
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .school-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #64748b !important;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        /* Hero / Welcome Styles */
+        .hero-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(46, 213, 115, 0.05) 0%, rgba(255, 107, 129, 0.05) 100%);
+            border-radius: 0 0 50px 50px;
+        }
+
+        .btn-custom {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 8px 15px rgba(46, 213, 115, 0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(46, 213, 115, 0.3);
+            color: white;
+        }
+
+        /* Card Customization */
+        .glass-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        /* Table Styling */
+        .table-responsive {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .table thead {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .table th { border: none; padding: 15px; }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden { display: none; }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 768px) {
+            .hero-section { padding: 60px 0; border-radius: 0 0 30px 30px; }
+            .hero-title { font-size: 2.2rem; }
+            .glass-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="logo" class="school-logo">
+                Spring Flowers School
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" id="btn-home" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" id="btn-profile" href="#">Student Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" id="btn-timetable" href="#">TimeTable</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Section (Section 1) -->
+    <header id="section-welcome" class="hero-section fade-in">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold hero-title mb-3">Welcome, Sarah!</h1>
+            <p class="lead text-muted mb-5">Access your academic hub for scheduling, profile management, and more.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <button class="btn btn-custom" onclick="showSection('section-profile')">My Profile</button>
+                <button class="btn btn-outline-success rounded-pill px-4" onclick="showSection('section-timetable')">View Schedule</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mb-5">
+        
+        <!-- Profile Section (Section 2) -->
+        <section id="section-profile" class="hidden fade-in">
+            <div class="glass-card max-auto" style="max-width: 800px; margin: auto;">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width:70px; height:70px; font-size: 1.5rem; font-weight:700;">SJ</div>
+                    <div class="ms-4">
+                        <h2 class="mb-0">Sarah Johnson</h2>
+                        <span class="badge bg-success-subtle text-success">Active Student</span>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <p class="text-muted small mb-1">Student ID</p>
+                        <p class="fw-bold">SFS-2026-1024</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-muted small mb-1">Grade / Section</p>
+                        <p class="fw-bold">Grade 10 / Blossom A</p>
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-muted small mb-1">Email</p>
+                        <p class="fw-bold">sarah.j@springflowers.edu</p>
+                    </div>
+                </div>
+                <hr class="my-4 opacity-50">
+                <button class="btn btn-light" onclick="showSection('section-welcome')">← Back to Hub</button>
+            </div>
+        </section>
+
+        <!-- TimeTable Section (Section 3) -->
+        <section id="section-timetable" class="hidden fade-in">
+            <div class="glass-card">
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                    <h2 class="fw-bold">Weekly TimeTable</h2>
+                    <span class="text-muted small">Academic Year: 2025-26</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">08:00 - 09:00</td>
+                                <td>Mathematics</td>
+                                <td>Physics</td>
+                                <td>Chemistry</td>
+                                <td>English</td>
+                                <td>History</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">09:00 - 10:00</td>
+                                <td>Physics</td>
+                                <td>Mathematics</td>
+                                <td>English</td>
+                                <td>Chemistry</td>
+                                <td>Biology</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-center bg-light" colspan="6">Break</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">10:30 - 11:30</td>
+                                <td>Biology</td>
+                                <td>History</td>
+                                <td>Computer Sci</td>
+                                <td>Mathematics</td>
+                                <td>Art & Crafts</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">11:30 - 12:30</td>
+                                <td>Gym / Sports</td>
+                                <td>Art & Crafts</td>
+                                <td>Biology</td>
+                                <td>Physics</td>
+                                <td>Library</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4 text-center">
+                    <p class="text-muted small">Last updated: Today at 09:00 AM</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-white border-top">
+        <div class="container">
+            <p class="text-muted small mb-0">&copy; 2026 Spring Flowers School Portal. Designed for Excellence.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const sections = ['section-welcome', 'section-profile', 'section-timetable'];
+        const navLinks = {
+            'section-welcome': document.getElementById('btn-home'),
+            'section-profile': document.getElementById('btn-profile'),
+            'section-timetable': document.getElementById('btn-timetable')
+        };
+
+        function showSection(targetId) {
+            // Hide all
+            sections.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+                navLinks[id].classList.remove('active');
+            });
+            // Show target
+            document.getElementById(targetId).classList.remove('hidden');
+            navLinks[targetId].classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Close mobile menu if open
+            const navCollapse = document.getElementById('navbarNav');
+            if(navCollapse.classList.contains('show')) {
+                bootstrap.Collapse.getInstance(navCollapse).hide();
+            }
+        }
+
+        // Event listeners
+        document.getElementById('btn-home').onclick = (e) => { e.preventDefault(); showSection('section-welcome'); };
+        document.getElementById('btn-profile').onclick = (e) => { e.preventDefault(); showSection('section-profile'); };
+        document.getElementById('btn-timetable').onclick = (e) => { e.preventDefault(); showSection('section-timetable'); };
+    </script>
+</body>
+</html>
